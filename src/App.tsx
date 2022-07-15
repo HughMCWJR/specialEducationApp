@@ -6,10 +6,14 @@ import { BrowserRouter as Router, Routes, Route}
 import { MainScreen } from "./frontend/mainScreen/MainScreen";
 import { UserScreen } from "./frontend/userScreen/UserScreen";
 import { StudentScreen } from "./frontend/studentScreen/StudentScreen";
-import { AddStudentScreen } from "./frontend/userScreen/AddStudentScreen";
+import { AddStudentScreen } from "./frontend/addStudentScreen/AddStudentScreen";
 import { WordListScreen } from "./frontend/wordListScreen/WordListScreen";
+import { Data } from "./backend/data";
+import { LessonScreen } from "./frontend/lessonScreen/LessonScreen";
 
 function App() {
+
+    Data.fetchWordLists();
 
     return (
         <Router>
@@ -18,6 +22,7 @@ function App() {
                 <Route path=":userName" element={<UserScreen/>} />
                 <Route path=":userName/:studentName" element={<StudentScreen/>} />
                 <Route path=":userName/:studentName/wordList" element={<WordListScreen/>} />
+                <Route path=":userName/:studentName/lesson" element={<LessonScreen />} />
                 <Route path=":userName/addStudent" element={<AddStudentScreen />} />
             </Routes>
         </Router>

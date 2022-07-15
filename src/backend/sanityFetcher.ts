@@ -1,6 +1,7 @@
-import { Student, WordCategory } from "./student";
+import { HighUtilityWord } from "./highUtilityWord";
+import { Student } from "./student";
 
-async function fetchWithQuery(query: string): Promise<any> {
+export async function fetchFromSanityWithQuery(query: string): Promise<any> {
 
     // Compose the URL for your project's endpoint and add the query
     let URL = `https://${process.env.REACT_APP_SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${process.env.REACT_APP_SANITY_DATASET}?query=${query}`;
@@ -35,7 +36,7 @@ async function fetchStudentIds(): Promise<string[]> {
 
     const query = encodeURIComponent(`*[_type == "student"]`);
 
-    const { result } = await fetchWithQuery(query);
+    const { result } = await fetchFromSanityWithQuery(query);
     if (result === undefined)
         return;
 
@@ -55,7 +56,7 @@ export async function fetchStudentById(id: string): Promise<Student | undefined>
 
     const query = encodeURIComponent(`*[_type == "student" && _id == "${id}"]`);
 
-    const { result } = await fetchWithQuery(query);
+    const { result } = await fetchFromSanityWithQuery(query);
     if (result === undefined)
         return;
 
@@ -69,14 +70,8 @@ export async function fetchStudentById(id: string): Promise<Student | undefined>
     const studentReadingLevel = student.readingLevel;
     if (typeof studentReadingLevel !== "number")
         return;
-    const studentMasteredWords: WordCategory = {
-        name: "mastered",
-        words: student.masteredWords
-    }
-    const studentTroubleWords: WordCategory = {
-        name: "trouble",
-        words: student.troubleWords
-    }
+    const studentMasteredWords: string[] = student.masteredWords;
+    const studentTroubleWords: string[] = student.troubleWords;
 
     return new Student({
         name: studentName,

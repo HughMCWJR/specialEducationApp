@@ -10,7 +10,9 @@ export const StudentScreen = () => {
     return (
         <div className="Screen">
             <h1>{params.studentName}</h1>
+            <button onClick={() => navigate("lesson")}>Go Through Lesson</button>
             <button onClick={() => navigate("wordList")}>Word List</button>
+            <button onClick={() => navigate(-1)}>Back</button>
         </div>
     )
 }

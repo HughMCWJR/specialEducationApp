@@ -12,6 +12,7 @@ export const UserScreen = () => {
             <h1>{params.userName}</h1>
             <StudentSelect />
             <button onClick={() => {navigate("addStudent")}}>Add Student</button>
+            <button onClick={() => navigate(-1)}>Back</button>
         </div>
     )
 }
