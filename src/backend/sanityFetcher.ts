@@ -1,4 +1,4 @@
-import { HighUtilityWord } from "./highUtilityWord";
+import fetch from "node-fetch";
 import { Student } from "./student";
 
 export async function fetchFromSanityWithQuery(query: string): Promise<any> {

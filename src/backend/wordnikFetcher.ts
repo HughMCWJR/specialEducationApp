@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 async function fetchFromWordnikWithQuery(word: string, query: string): Promise<any> {
 
     // Compose the URL for your project's endpoint and add the query

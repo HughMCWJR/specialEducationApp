@@ -2,7 +2,6 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { Data } from "../../backend/data";
 import { mutate } from "../../backend/sanityMutator";
-import { Student } from "../../backend/student";
 
 export const AddStudentScreen = () => {
     const [name, setName] = React.useState<string | undefined>(undefined);

@@ -37,14 +37,13 @@ export class Data {
 
         // Chooose starting words
         const words: string[] = [];
-        for (let i = 0; i < Student.wordListLength; ) {
+        while (words.length < Student.wordListLength - 1) {
 
             const randomIndex = Math.floor(Math.random() * wordList.length);
-            if (words.findIndex((word) => wordList[randomIndex]) !== -1)
+            if (words.findIndex((word) => word === wordList[randomIndex]) !== -1)
                 continue;
 
             words.push(wordList[randomIndex]);
-            i++;
 
         }
 
