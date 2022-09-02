@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import { HighUtilityWord } from "./highUtilityWord";
 
 async function fetchFromWordnikWithQuery(word: string, query: string): Promise<any> {
 
@@ -12,11 +13,12 @@ async function fetchFromWordnikWithQuery(word: string, query: string): Promise<a
 
 }
 
-export async function fetchWordExamples(word: string, numberOfExamples: number): Promise<string[]> {
+export async function fetchWordExamples(word: HighUtilityWord, numberOfExamples: number): Promise<string[]> {
 
     const exampleTexts: string[] = [];
 
-    const { examples } = await fetchFromWordnikWithQuery(word, `examples?limit=${numberOfExamples}`);
+    const { examples } = await fetchFromWordnikWithQuery(word.word, `examples?limit=${numberOfExamples}&skip=${word.numExamplesAskedFor}`);
+    word.numExamplesAskedFor += numberOfExamples;
     if (examples === undefined)
         return;
 

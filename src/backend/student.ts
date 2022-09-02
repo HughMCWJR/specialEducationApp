@@ -15,7 +15,7 @@ export class Student {
 
     public name: string;
     public id: string;
-    private readingLevel: number;
+    public readingLevel: number;
 
     public masteredWords: HighUtilityWord[];
     public troubleWords: HighUtilityWord[];
