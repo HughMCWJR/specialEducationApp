@@ -28,6 +28,9 @@ export const LessonScreen = () => {
                 return;
             }
 
+            if (currentWordIndex === 0)
+                return;
+
             const currentWord = words[currentWordIndex - 1];
 
             let example = undefined;
@@ -89,7 +92,7 @@ export const LessonScreen = () => {
     
     return (
         <div className="Screen">
-            <h1>{words !== undefined ? (words[currentWordIndex - 1] !== undefined ? words[currentWordIndex].word : "") : ""}</h1>
+            <h1>{words !== undefined ? (words[currentWordIndex - 1] !== undefined ? words[currentWordIndex - 1].word : "") : ""}</h1>
             <h1>{currentExample}</h1>
             <button onClick={() => setCurrentWordIndex(currentWordIndex + 1)}>Next</button>
         </div>
